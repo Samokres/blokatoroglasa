@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blokator Oglasa - Crowdfunding za inovativni ad blocker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset i osnovni stilovi */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Header i logo */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            width: 80px; /* Adjust as needed for your logo size */
+            height: auto;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            color: #055B7C; /* Primary color */
+        }
+        
+        .logo h1 span {
+            color: #055B7C;
+        }
+        
+        /* Hero section with video placeholder */
+        .hero {
+            background: linear-gradient(135deg, #055B7C, #1a3b8a);
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        .video-container {
+            width: 80%;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        
+        .video-container video {
+            width: 100%;
+            height: auto;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-button {
+            background-color: #fff;
+            color: #055B7C;
+            padding: 12px 28px;
+            border-radius: 25px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background-color: #e9ecef;
+        }
+        
+        /* Progress bar */
+        .progress-section {
+            padding: 40px 0;
+            background-color: #fff;
+        }
+        
+        .progress-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .progress-bar {
+            background-color: #e9ecef;
+            height: 20px;
+            border-radius: 10px;
+            flex: 1;
+            margin: 0 20px;
+            position: relative;
+        }
+        
+        .progress {
+            background-color: #055B7C;
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.3s ease;
+            width: 0%; /* Initial width - update via JS */
+        }
+        
+        .progress-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #055B7C;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: #666;
+        }
+        
+        /* Packages section */
+        .packages {
+            padding: 60px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .package-card {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .package-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .package-price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #055B7C;
+            margin-bottom: 15px;
+        }
+        
+        .package-title {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .package-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 25px;
+        }
+        
+        .package-features li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .package-features li i {
+            color: #055B7C;
+        }
+        
+        .package-button {
+            background-color: #055B7C;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .package-button:hover {
+            background-color: #044a6b;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #055B7C;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        footer p {
+            margin-bottom: 15px;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: #e9ecef;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .package-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="slike/light-logo.png" alt="Blokator Oglasa Logo" class="logo-icon">
+                    <h1>Blokator Oglasa</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with Video Placeholder -->
+    <section class="hero">
+        <div class="container">
+            <div class="video-container">
+                <!-- Placeholder for video - replace with actual video file -->
+                <video autoplay loop muted playsinline>
+                    <source src="demo-video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <h2>Pridružite se razvoju Blokatora Oglasa</h2>
+            <p>Blokator Oglasa je ekstenzija za preglednike koja učinkovito blokira oglase na YouTubeu i Redditu, koristeći napredne tehnike poput malih vremenskih skokova i automatskog klika. S četiri moda rada (YouTube, Sneaky, Block, Reddit), korisnici mogu prilagoditi blokiranje svojim potrebama, uz mogućnost whitelistinga za podršku kreatorima. Projekt nudi etičan model monetizacije, uključujući premium verziju bez oglasa i crowdfunding za razvoj. Cilj je stvoriti održiv, user-friendly alat koji štedi vrijeme i novac korisnicima, dok ulagačima nudi postotak u tvrtki i druge benefite.</p>
+            <a href="#packages" class="cta-button">Uložite sada</a>
+        </div>
+    </section>
+
+    <!-- Progress Section -->
+    <section class="progress-section">
+        <div class="container">
+            <div class="progress-container">
+                <div class="stat">
+                    <div class="stat-number" id="total-raised">0</div>
+                    <div class="stat-label">Prikupljeno</div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="goal">50,000</div>
+                    <div class="stat-label">Cilj</div>
+                </div>
+            </div>
+            <div class="progress-stats">
+                <div class="stat">
+                    <div class="stat-number" id="total-investors">0</div>
+                    <div class="stat-label">Ulagača</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="days-left">30</div>
+                    <div class="stat-label">Dana ostalo</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section class="packages" id="packages">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 40px; color: #055B7C;">Paketi ulaganja</h2>
+            <div class="package-grid">
+                <div class="package-card">
+                    <div class="package-price">€5</div>
+                    <div class="package-title">Spomenuti Pokrovitelj</div>
+                    <ul class="package-features">
+                        <li><i class="fas fa-check"></i>Spomenuto ime</li>
+                        <li><i class="fas fa-check"></i>Mjesečno izvješće o napretku</li>
+                        <li><i class="fas fa-check"></i>Pristup premium verziji pri izlasku</li>
+                    </ul>
+                    <a href="#" class="package-button" onclick="processInvestment(5, 0)">Uložite</a>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-price">€50</div>
+                    <div class="package-title">Stilski Podržavatelj</div>
+                    <ul class="package-features">
+                        <li><i class="fas fa-check"></i>Sve iz prethodnog paketa</li>
+                        <li><i class="fas fa-check"></i>Kvalitetni komad odjeće s logom (po izboru)</li>
+                        <li><i class="fas fa-check"></i>Besplatna dostava</li>
+                        <li><i class="fas fa-check"></i>Pismo zahvale</li>
+                    </ul>
+                    <a href="#" class="package-button" onclick="processInvestment(50, 0)">Uložite</a>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-price">€200</div>
+                    <div class="package-title">Timski Partner</div>
+                    <ul class="package-features">
+                        <li><i class="fas fa-check"></i>Sve iz prethodnih paketa</li>
+                        <li><i class="fas fa-check"></i>4 dodatna komada odjeće</li>
+                        <li><i class="fas fa-check"></i>Pripadajući postotak u tvrtki (0.04%)</li>
+                    </ul>
+                    <a href="#" class="package-button" onclick="processInvestment(200, 0.04)">Uložite</a>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-price">€5000</div>
+                    <div class="package-title">Kickstarter Ulagač</div>
+                    <ul class="package-features">
+                        <li><i class="fas fa-check"></i>Sve iz prethodnih paketa</li>
+                        <li><i class="fas fa-check"></i>Postotak tvrtke (vrijedi samo za Kickstarter)</li>
+                        <li><i class="fas fa-check"></i>Cijena dionica raste nakon dosegnute cifre</li>
+                    </ul>
+                    <a href="#" class="package-button" onclick="processInvestment(5000, 'Kickstarter postotak')">Uložite</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2026 Blokator Oglasa. Sva prava pridržana.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let totalRaised = 0;
+        let totalInvestors = 0;
+        let daysLeft = 30;
+
+        function processInvestment(amount, percentage) {
+            totalRaised += amount;
+            totalInvestors += 1;
+            
+            // Ažuriraj prikaz
+            document.getElementById('total-raised').textContent = totalRaised.toLocaleString();
+            document.getElementById('total-investors').textContent = totalInvestors;
+            
+            const percentageRaised = Math.min((totalRaised / 50000) * 100, 100);
+            document.querySelector('.progress').style.width = percentageRaised + '%';
+            
+            let message = `Hvala na ulaganju od €${amount.toLocaleString()}!`;
+            if (percentage) {
+                message += ` Ostvarili ste ${percentage} postotak u tvrtki.`;
+            }
+            
+            alert(message);
+        }
+    </script>
+</body>
+</html>
