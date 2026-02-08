@@ -2,430 +2,1437 @@
 <html lang="hr">
 <head>
     <meta charset="UTF-8">
+    <title>Blokator Oglasa – Crowdfunding</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blokator Oglasa - Crowdfunding za inovativni ad blocker</title>
+    <!-- Ikone -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        /* Reset i osnovni stilovi */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         }
-        
+
         body {
-            background-color: #f8f9fa;
-            color: #333;
-            line-height: 1.6;
+            background: radial-gradient(circle at top, #111827 0, #020617 45%, #000 100%);
+            color: #e5e7eb;
+            min-height: 100vh;
         }
-        
-        /* Header i logo */
-        header {
-            background-color: #fff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        
+
+        a { color: inherit; text-decoration: none; }
+
         .container {
-            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(18px);
+            background: linear-gradient(to right, rgba(15,23,42,0.95), rgba(15,23,42,0.7));
+            border-bottom: 1px solid rgba(148,163,184,0.25);
+        }
+
         .header-content {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
+            justify-content: space-between;
+            padding: 14px 0;
         }
-        
+
         .logo {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
-        
+
         .logo-icon {
-            width: 80px; /* Adjust as needed for your logo size */
-            height: auto;
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            background: radial-gradient(circle at 30% 20%, #38bdf8, #1d4ed8 40%, #020617 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 30px rgba(56,189,248,0.5);
         }
-        
-        .logo h1 {
-            font-size: 1.8rem;
-            color: #055B7C; /* Primary color */
+
+        .logo-icon img {
+            width: 70%;
+            height: 70%;
+            object-fit: contain;
         }
-        
-        .logo h1 span {
-            color: #055B7C;
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
         }
-        
-        /* Hero section with video placeholder */
+
+        .logo-text h1 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+        }
+
+        .logo-text span {
+            font-size: 0.8rem;
+            color: #9ca3af;
+        }
+
+        .header-cta a {
+            padding: 8px 18px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: #ecfdf5;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 0 18px rgba(34,197,94,0.5);
+        }
+
+        /* HERO */
+
         .hero {
-            background: linear-gradient(135deg, #055B7C, #1a3b8a);
-            color: white;
-            text-align: center;
-            padding: 80px 0;
             position: relative;
-        }
-        
-        .video-container {
-            width: 80%;
-            max-width: 800px;
-            margin: 0 auto 30px;
-            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            padding: 60px 0 40px;
         }
-        
-        .video-container video {
-            width: 100%;
-            height: auto;
+
+        .hero-inner {
+            display: grid;
+            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+            gap: 40px;
+            align-items: center;
         }
-        
-        .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+
+        .hero-left h2 {
+            font-size: 2.4rem;
+            line-height: 1.1;
+            margin-bottom: 16px;
         }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            max-width: 800px;
-            margin: 0 auto 30px;
+
+        .hero-left h2 span {
+            background: linear-gradient(135deg, #38bdf8, #a855f7);
+            -webkit-background-clip: text;
+            color: transparent;
         }
-        
-        .cta-button {
-            background-color: #fff;
-            color: #055B7C;
-            padding: 12px 28px;
-            border-radius: 25px;
-            font-weight: bold;
-            text-decoration: none;
-            transition: all 0.3s ease;
+
+        .hero-left p {
+            color: #9ca3af;
+            max-width: 540px;
+            margin-bottom: 22px;
+            font-size: 0.98rem;
         }
-        
-        .cta-button:hover {
-            background-color: #e9ecef;
+
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 18px;
         }
-        
-        /* Progress bar */
-        .progress-section {
-            padding: 40px 0;
-            background-color: #fff;
+
+        .btn-primary {
+            padding: 10px 22px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #3b82f6, #a855f7);
+            color: #e5e7eb;
+            font-weight: 600;
+            font-size: 0.95rem;
+            box-shadow: 0 0 24px rgba(59,130,246,0.6);
         }
-        
-        .progress-container {
+
+        .btn-ghost {
+            padding: 10px 18px;
+            border-radius: 999px;
+            border: 1px solid rgba(148,163,184,0.6);
+            color: #e5e7eb;
+            font-size: 0.9rem;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 18px;
+            font-size: 0.8rem;
+            color: #9ca3af;
+        }
+
+        .hero-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hero-meta i {
+            color: #38bdf8;
+        }
+
+        /* HERO RIGHT – animirana pozadina */
+
+        .hero-right {
+            position: relative;
+            min-height: 260px;
+            border-radius: 24px;
+            overflow: hidden;
+            background: radial-gradient(circle at top, #1e293b 0, #020617 60%);
+            border: 1px solid rgba(148,163,184,0.35);
+            box-shadow: 0 0 40px rgba(15,23,42,0.9);
+        }
+
+        .hero-neon-layer {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 10% 20%, rgba(56,189,248,0.18) 0, transparent 55%),
+                radial-gradient(circle at 80% 30%, rgba(168,85,247,0.22) 0, transparent 55%),
+                radial-gradient(circle at 50% 90%, rgba(34,197,94,0.18) 0, transparent 55%);
+            mix-blend-mode: screen;
+            opacity: 0.9;
+        }
+
+        .hero-lines {
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(
+                to right,
+                rgba(148,163,184,0.08) 1px,
+                transparent 1px
+            );
+            background-size: 40px 100%;
+            animation: moveLines 18s linear infinite;
+            opacity: 0.4;
+        }
+
+        @keyframes moveLines {
+            from { transform: translateX(0); }
+            to { transform: translateX(-40px); }
+        }
+
+        .hero-dots {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .hero-dot {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 999px;
+            background: #38bdf8;
+            box-shadow: 0 0 12px rgba(56,189,248,0.9);
+            opacity: 0.2;
+            animation: pulseDot 6s ease-in-out infinite;
+        }
+
+        @keyframes pulseDot {
+            0%, 100% { transform: scale(0.6); opacity: 0.15; }
+            50% { transform: scale(1.4); opacity: 0.9; }
+        }
+
+        .hero-ui-preview {
+            position: relative;
+            z-index: 2;
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .hero-ui-top {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
         }
-        
-        .progress-bar {
-            background-color: #e9ecef;
-            height: 20px;
-            border-radius: 10px;
-            flex: 1;
-            margin: 0 20px;
-            position: relative;
-        }
-        
-        .progress {
-            background-color: #055B7C;
-            height: 100%;
-            border-radius: 10px;
-            transition: width 0.3s ease;
-            width: 0%; /* Initial width - update via JS */
-        }
-        
-        .progress-stats {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 30px;
-        }
-        
-        .stat {
-            text-align: center;
-        }
-        
-        .stat-number {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #055B7C;
-        }
-        
-        .stat-label {
-            font-size: 1rem;
-            color: #666;
-        }
-        
-        /* Packages section */
-        .packages {
-            padding: 60px 0;
-            background-color: #f8f9fa;
-        }
-        
-        .package-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        
-        .package-card {
-            background-color: #fff;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            padding: 25px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-        
-        .package-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .package-price {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #055B7C;
-            margin-bottom: 15px;
-        }
-        
-        .package-title {
-            font-size: 1.4rem;
-            margin-bottom: 20px;
-            color: #333;
-        }
-        
-        .package-features {
-            list-style: none;
-            text-align: left;
-            margin-bottom: 25px;
-        }
-        
-        .package-features li {
-            margin-bottom: 12px;
+
+        .hero-ui-logo {
             display: flex;
             align-items: center;
             gap: 10px;
         }
-        
-        .package-features li i {
-            color: #055B7C;
+
+        .hero-ui-logo img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
         }
-        
-        .package-button {
-            background-color: #055B7C;
-            color: white;
-            padding: 12px 25px;
-            border-radius: 25px;
-            font-weight: bold;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
+
+        .hero-ui-logo span {
+            font-size: 0.9rem;
+            color: #e5e7eb;
         }
-        
-        .package-button:hover {
-            background-color: #044a6b;
+
+        .hero-ui-pill {
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: rgba(15,23,42,0.8);
+            border: 1px solid rgba(148,163,184,0.5);
+            font-size: 0.7rem;
+            color: #9ca3af;
         }
-        
-        /* Footer */
-        footer {
-            background-color: #055B7C;
-            color: white;
-            padding: 40px 0;
-            text-align: center;
+
+        .hero-ui-modes {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0,1fr));
+            gap: 10px;
         }
-        
-        footer p {
-            margin-bottom: 15px;
-        }
-        
-        .social-icons {
+
+        .hero-ui-mode {
+            border-radius: 14px;
+            padding: 10px 8px;
+            background: rgba(15,23,42,0.9);
+            border: 1px solid rgba(148,163,184,0.4);
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.7rem;
+        }
+
+        .hero-ui-mode img {
+            width: 26px;
+            height: 26px;
+            object-fit: contain;
+        }
+
+        .hero-ui-counter {
+            margin-top: 6px;
+            padding: 10px 12px;
+            border-radius: 14px;
+            background: rgba(15,23,42,0.9);
+            border: 1px solid rgba(148,163,184,0.4);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+        }
+
+        .hero-ui-counter span:first-child {
+            color: #9ca3af;
+        }
+
+        .hero-ui-counter span:last-child {
+            color: #22c55e;
+            font-weight: 600;
+        }
+
+        /* PROGRESS + GRID BACKGROUND */
+
+        .progress-section {
+            position: relative;
+            padding: 40px 0 50px;
+        }
+
+        .progress-bg {
+            position: absolute;
+            inset: 0;
+            opacity: 0.35;
+            pointer-events: none;
+        }
+
+        .progress-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 1px 1px, rgba(148,163,184,0.35) 1px, transparent 0);
+            background-size: 26px 26px;
+            mask-image: radial-gradient(circle at top, black 0, transparent 70%);
+        }
+
+        .progress-glow {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 50% 0%, rgba(56,189,248,0.25) 0, transparent 55%);
+        }
+
+        .progress-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .progress-card {
+            border-radius: 22px;
+            padding: 22px 20px;
+            background: rgba(15,23,42,0.92);
+            border: 1px solid rgba(148,163,184,0.4);
+            box-shadow: 0 0 30px rgba(15,23,42,0.9);
+        }
+
+        .progress-top {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 16px;
+        }
+
+        .progress-amount {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .progress-amount span:first-child {
+            font-size: 0.8rem;
+            color: #9ca3af;
+        }
+
+        .progress-amount span:last-child {
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .progress-goal {
+            margin-left: auto;
+            text-align: right;
+            font-size: 0.8rem;
+            color: #9ca3af;
+        }
+
+        .progress-bar {
+            position: relative;
+            height: 10px;
+            border-radius: 999px;
+            background: rgba(30,64,175,0.6);
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-fill {
+            position: absolute;
+            inset: 0;
+            width: 0%;
+            border-radius: inherit;
+            background: linear-gradient(90deg, #22c55e, #3b82f6, #a855f7);
+            box-shadow: 0 0 18px rgba(59,130,246,0.8);
+            transition: width 0.4s ease-out;
+        }
+
+        .progress-bottom {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #9ca3af;
+        }
+
+        /* UI SHOWCASE */
+
+        .ui-showcase {
+            padding: 40px 0 10px;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+
+        .section-sub {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            margin-bottom: 20px;
+        }
+
+        .ui-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
-        
+
+        .ui-card {
+            border-radius: 18px;
+            padding: 14px;
+            background: rgba(15,23,42,0.9);
+            border: 1px solid rgba(148,163,184,0.4);
+        }
+
+        .ui-card img {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
+
+        .ui-card h3 {
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+
+        .ui-card p {
+            font-size: 0.8rem;
+            color: #9ca3af;
+        }
+
+        /* FUTURE VIDEO SLOT */
+
+        .future-video-slot {
+            margin: 40px 0;
+            border-radius: 20px;
+            border: 1px dashed rgba(148,163,184,0.6);
+            padding: 18px;
+            background: rgba(15,23,42,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .future-video-text {
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+
+        .future-video-pill {
+            padding: 6px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(148,163,184,0.7);
+            font-size: 0.8rem;
+            color: #e5e7eb;
+        }
+
+        /* PACKAGES */
+
+        .packages {
+            padding: 30px 0 40px;
+        }
+
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 22px;
+        }
+
+        .package-card {
+            border-radius: 20px;
+            padding: 18px 16px 18px;
+            background: radial-gradient(circle at top, rgba(15,23,42,0.95), rgba(15,23,42,0.9));
+            border: 1px solid rgba(148,163,184,0.45);
+            box-shadow: 0 0 26px rgba(15,23,42,0.9);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .package-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .package-left {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .package-title {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .package-price {
+            font-size: 1.2rem;
+            color: #38bdf8;
+            font-weight: 600;
+        }
+
+        .package-badge-img {
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            background: radial-gradient(circle at 30% 20%, #38bdf8, #1d4ed8 40%, #020617 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .package-badge-img img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+        }
+
+        .package-features {
+            list-style: none;
+            font-size: 0.8rem;
+            color: #9ca3af;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 4px;
+        }
+
+        .package-features li i {
+            color: #38bdf8;
+            margin-right: 6px;
+        }
+
+        .package-choice {
+            font-size: 0.8rem;
+            color: #e5e7eb;
+            margin-top: 4px;
+        }
+
+        .package-actions {
+            margin-top: 8px;
+        }
+
+        .package-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #3b82f6, #a855f7);
+            color: #e5e7eb;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+        }
+
+        .package-button.secondary {
+            background: transparent;
+            border: 1px solid rgba(148,163,184,0.6);
+        }
+
+        /* TIMELINE / GRAF NAGRADA */
+
+        .rewards-timeline {
+            padding: 20px 0 40px;
+        }
+
+        .timeline-track {
+            position: relative;
+            margin-top: 18px;
+            padding: 18px 16px;
+            border-radius: 18px;
+            background: rgba(15,23,42,0.9);
+            border: 1px solid rgba(148,163,184,0.4);
+        }
+
+        .timeline-line {
+            position: relative;
+            height: 2px;
+            background: linear-gradient(90deg, #38bdf8, #a855f7);
+            margin: 18px 0 10px;
+        }
+
+        .timeline-points {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 6px;
+        }
+
+        .timeline-point {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            flex: 1;
+        }
+
+        .timeline-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            background: #38bdf8;
+            box-shadow: 0 0 10px rgba(56,189,248,0.9);
+        }
+
+        .timeline-amount {
+            font-size: 0.75rem;
+            color: #e5e7eb;
+        }
+
+        .timeline-img {
+            width: 26px;
+            height: 26px;
+            border-radius: 999px;
+            overflow: hidden;
+            background: #020617;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timeline-img img {
+            width: 90%;
+            height: 90%;
+            object-fit: contain;
+        }
+
+        /* HALL OF SUPPORTERS */
+
+        .supporters {
+            padding: 20px 0 40px;
+        }
+
+        .supporters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+            margin-top: 14px;
+        }
+
+        .supporter-card {
+            border-radius: 16px;
+            padding: 10px 12px;
+            background: rgba(15,23,42,0.9);
+            border: 1px solid rgba(148,163,184,0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.8rem;
+        }
+
+        .supporter-badge {
+            width: 30px;
+            height: 30px;
+            border-radius: 999px;
+            overflow: hidden;
+            background: #020617;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .supporter-badge img {
+            width: 90%;
+            height: 90%;
+            object-fit: contain;
+        }
+
+        .supporter-name {
+            font-weight: 500;
+        }
+
+        .supporter-tier {
+            color: #9ca3af;
+            font-size: 0.75rem;
+        }
+
+        /* FOOTER */
+
+        footer {
+            border-top: 1px solid rgba(148,163,184,0.3);
+            padding: 18px 0 26px;
+            font-size: 0.8rem;
+            color: #9ca3af;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+
         .social-icons a {
-            color: white;
-            font-size: 1.5rem;
-            transition: color 0.3s ease;
+            width: 26px;
+            height: 26px;
+            border-radius: 999px;
+            border: 1px solid rgba(148,163,184,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e5e7eb;
+            font-size: 0.8rem;
         }
-        
-        .social-icons a:hover {
-            color: #e9ecef;
+
+        @media (max-width: 900px) {
+            .hero-inner {
+                grid-template-columns: minmax(0,1fr);
+            }
         }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero {
-                padding: 60px 0;
+
+        @media (max-width: 640px) {
+            .hero-left h2 {
+                font-size: 1.9rem;
             }
-            
-            .hero h2 {
-                font-size: 2rem;
-            }
-            
-            .package-grid {
-                grid-template-columns: 1fr;
+            .hero-actions {
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <img src="slike/light-logo.png" alt="Blokator Oglasa Logo" class="logo-icon">
+<header>
+    <div class="container">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="slike/dark-logo.png" alt="Blokator Oglasa Logo">
+                </div>
+                <div class="logo-text">
                     <h1>Blokator Oglasa</h1>
+                    <span>Neon tech ad-block ekstenzija</span>
+                </div>
+            </div>
+            <div class="header-cta">
+                <a href="#packages">Uloži sada</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-inner">
+            <div class="hero-left">
+                <h2>Ubrzaj internet.<br><span>Zaobiđi oglase, ne kreatore.</span></h2>
+                <p>
+                    Blokator Oglasa je pametna ekstenzija koja blokira oglase na YouTubeu, Redditu i drugim stranicama,
+                    uz mogućnost whitelistanja za podršku kreatorima. Ulažeš u alat koji štedi vrijeme, živce i novac –
+                    a zauzvrat možeš dobiti udio u budućoj tvrtki ili ekskluzivan merch.
+                </p>
+                <div class="hero-actions">
+                    <a href="#packages" class="btn-primary"><i class="fa-solid fa-bolt"></i> Pogledaj pakete ulaganja</a>
+                    <a href="#timeline" class="btn-ghost"><i class="fa-solid fa-chart-line"></i> Što dobivaš po iznosu</a>
+                </div>
+                <div class="hero-meta">
+                    <span><i class="fa-solid fa-shield-halved"></i> Fokus na etičan ad-block</span>
+                    <span><i class="fa-solid fa-code"></i> Trenutno u aktivnom razvoju</span>
+                </div>
+            </div>
+
+            <div class="hero-right">
+                <div class="hero-neon-layer"></div>
+                <div class="hero-lines"></div>
+                <div class="hero-dots" id="hero-dots"></div>
+
+                <div class="hero-ui-preview">
+                    <div class="hero-ui-top">
+                        <div class="hero-ui-logo">
+                            <img src="slike/abstract-logo-gray.png" alt="Logo">
+                            <span>Blokator Oglasa UI</span>
+                        </div>
+                        <div class="hero-ui-pill">Trenutni prototip</div>
+                    </div>
+
+                    <div class="hero-ui-modes">
+                        <div class="hero-ui-mode">
+                            <img src="slike/youtube-red.png" alt="YouTube">
+                            <span>YouTube mod</span>
+                        </div>
+                        <div class="hero-ui-mode">
+                            <img src="slike/mask-purple.png" alt="Sneaky">
+                            <span>Sneaky mod</span>
+                        </div>
+                        <div class="hero-ui-mode">
+                            <img src="slike/hand-white.png" alt="Block">
+                            <span>Block mod</span>
+                        </div>
+                        <div class="hero-ui-mode">
+                            <img src="slike/reddit-orange.png" alt="Reddit">
+                            <span>Reddit mod</span>
+                        </div>
+                    </div>
+
+                    <div class="hero-ui-counter">
+                        <span>BLOCKED ADS:</span>
+                        <span id="blocked-counter">64</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </header>
+    </div>
+</section>
 
-    <!-- Hero Section with Video Placeholder -->
-    <section class="hero">
-        <div class="container">
-            <div class="video-container">
-                <!-- Placeholder for video - replace with actual video file -->
-                <video autoplay loop muted playsinline>
-                    <source src="demo-video.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-            <h2>Pridružite se razvoju Blokatora Oglasa</h2>
-            <p>Blokator Oglasa je ekstenzija za preglednike koja učinkovito blokira oglase na YouTubeu i Redditu te većini drugih stranica. S trenutno četiri moda rada (YouTube, Sneaky, Block, Reddit), korisnici mogu prilagoditi blokiranje svojim potrebama, uz mogućnost whitelistinga za podršku kreatorima. Projekt nudi etičan model monetizacije, uključujući premium verziju bez oglasa i crowdfunding za razvoj. Cilj je stvoriti održiv, user-friendly alat koji štedi vrijeme i novac korisnicima, dok ulagačima nudi postotak u tvrtki i druge benefite.</p>
-            <a href="#packages" class="cta-button">Uložite sada</a>
-        </div>
-    </section>
-
-    <!-- Progress Section -->
-    <section class="progress-section">
-        <div class="container">
-            <div class="progress-container">
-                <div class="stat">
-                    <div class="stat-number" id="total-raised">0</div>
-                    <div class="stat-label">Prikupljeno</div>
+<section class="progress-section">
+    <div class="progress-bg">
+        <div class="progress-grid"></div>
+        <div class="progress-glow"></div>
+    </div>
+    <div class="container progress-inner">
+        <div class="progress-card">
+            <div class="progress-top">
+                <div class="progress-amount">
+                    <span>Prikupljeno</span>
+                    <span id="total-raised">0 €</span>
                 </div>
-                <div class="progress-bar">
-                    <div class="progress"></div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number" id="goal">50,000</div>
-                    <div class="stat-label">Cilj</div>
+                <div class="progress-goal">
+                    <div>Cilj: 50.000 €</div>
+                    <div id="days-left">30 dana preostalo</div>
                 </div>
             </div>
-            <div class="progress-stats">
-                <div class="stat">
-                    <div class="stat-number" id="total-investors">0</div>
-                    <div class="stat-label">Ulagača</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number" id="days-left">30</div>
-                    <div class="stat-label">Dana ostalo</div>
-                </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <div class="progress-bottom">
+                <span id="total-investors">0 ulagača</span>
+                <span id="progress-percent">0% cilja</span>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Packages Section -->
-    <section class="packages" id="packages">
-        <div class="container">
-            <h2 style="text-align: center; margin-bottom: 40px; color: #055B7C;">Paketi ulaganja</h2>
-            <div class="package-grid">
-                <div class="package-card">
-                    <div class="package-price">€5</div>
-                    <div class="package-title">Spomenuti Pokrovitelj</div>
-                    <ul class="package-features">
-                        <li><i class="fas fa-check"></i>Spomenuto ime</li>
-                        <li><i class="fas fa-check"></i>Mjesečno izvješće o napretku</li>
-                        <li><i class="fas fa-check"></i>Pristup premium verziji pri izlasku</li>
-                    </ul>
-                    <a href="#" class="package-button" onclick="processInvestment(5, 0)">Uložite</a>
+<section class="ui-showcase">
+    <div class="container">
+        <h2 class="section-title">Trenutni UI – Light & Dark</h2>
+        <p class="section-sub">
+            UI je u aktivnom razvoju. Planirane su dvije glavne teme – svijetla za dnevno korištenje i tamna za noćne sesije.
+        </p>
+        <div class="ui-grid">
+            <div class="ui-card">
+                <img src="slike/ui-light.png" alt="Light UI">
+                <h3>Light Mode</h3>
+                <p>Čist, jasan i jednostavan prikaz za svakodnevno korištenje. Fokus na preglednosti i minimalizmu.</p>
+            </div>
+            <div class="ui-card">
+                <img src="slike/ui-dark.png" alt="Dark UI">
+                <h3>Dark Mode</h3>
+                <p>Neon tamna tema za noćne korisnike, s naglaskom na kontrast, fokus i vizualni identitet.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="future-video-slot">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+        <div class="future-video-text">
+            <strong>Prostor za video prezentaciju</strong><br>
+            Ovdje će kasnije biti dodan kratki video koji prikazuje rad ekstenzije u stvarnom vremenu (demo, showcase, objašnjenje).
+        </div>
+        <div class="future-video-pill">
+            Dodaj kasnije: &lt;video src="tvoj-video.mp4"&gt;
+        </div>
+    </div>
+</section>
+
+<section class="packages" id="packages">
+    <div class="container">
+        <h2 class="section-title">Paketi ulaganja</h2>
+        <p class="section-sub">
+            Svaki paket otključava posebne nagrade, digitalne i fizičke. Kod viših iznosa biraš između udjela u budućoj tvrtki ili ekskluzivnog mercha.
+        </p>
+
+        <div class="package-grid">
+
+            <!-- 5 € -->
+            <div class="package-card">
+                <div class="package-header">
+                    <div class="package-left">
+                        <div class="package-title">Bronze Supporter</div>
+                        <div class="package-price">5 €</div>
+                    </div>
+                    <div class="package-badge-img">
+                        <img src="slike/mask-white.png" alt="Bronze Badge">
+                    </div>
                 </div>
-                
-                <div class="package-card">
-                    <div class="package-price">€50</div>
-                    <div class="package-title">Stilski Podržavatelj</div>
-                    <ul class="package-features">
-                        <li><i class="fas fa-check"></i>Sve iz prethodnog paketa</li>
-                        <li><i class="fas fa-check"></i>Kvalitetni komad odjeće s logom (po izboru)</li>
-                        <li><i class="fas fa-check"></i>Besplatna dostava</li>
-                        <li><i class="fas fa-check"></i>Pismo zahvale</li>
-                    </ul>
-                    <a href="#" class="package-button" onclick="processInvestment(50, 0)">Uložite</a>
+                <ul class="package-features">
+                    <li><i class="fa-solid fa-check"></i>Ime u creditsima</li>
+                    <li><i class="fa-solid fa-check"></i>Mjesečni update o napretku</li>
+                    <li><i class="fa-solid fa-check"></i>Bronze mask badge</li>
+                </ul>
+                <div class="package-actions">
+                    <button class="package-button" onclick="simpleInvestment(5, 'Bronze Supporter')">
+                        Uloži 5 €
+                    </button>
                 </div>
-                
-                <div class="package-card">
-                    <div class="package-price">€200</div>
-                    <div class="package-title">Timski Partner</div>
-                    <ul class="package-features">
-                        <li><i class="fas fa-check"></i>Sve iz prethodnih paketa</li>
-                        <li><i class="fas fa-check"></i>4 dodatna komada odjeće</li>
-                        <li><i class="fas fa-check"></i>Pripadajući postotak u tvrtki (0.04%)</li>
-                    </ul>
-                    <a href="#" class="package-button" onclick="processInvestment(200, 0.04)">Uložite</a>
+            </div>
+
+            <!-- 20 € -->
+            <div class="package-card">
+                <div class="package-header">
+                    <div class="package-left">
+                        <div class="package-title">Silver Supporter</div>
+                        <div class="package-price">20 €</div>
+                    </div>
+                    <div class="package-badge-img">
+                        <img src="slike/mask-purple.png" alt="Silver Badge">
+                    </div>
                 </div>
-                
-                <div class="package-card">
-                    <div class="package-price">€5000</div>
-                    <div class="package-title">Kickstarter Ulagač</div>
-                    <ul class="package-features">
-                        <li><i class="fas fa-check"></i>Sve iz prethodnih paketa</li>
-                        <li><i class="fas fa-check"></i>Postotak tvrtke (vrijedi samo za Kickstarter)</li>
-                        <li><i class="fas fa-check"></i>Cijena dionica raste nakon dosegnute cifre</li>
-                    </ul>
-                    <a href="#" class="package-button" onclick="processInvestment(5000, 'Kickstarter postotak')">Uložite</a>
+                <ul class="package-features">
+                    <li><i class="fa-solid fa-check"></i>Sve iz Bronze paketa</li>
+                    <li><i class="fa-solid fa-check"></i>Pismo zahvale</li>
+                    <li><i class="fa-solid fa-check"></i>Silver mask badge</li>
+                </ul>
+                <div class="package-actions">
+                    <button class="package-button" onclick="simpleInvestment(20, 'Silver Supporter')">
+                        Uloži 20 €
+                    </button>
+                </div>
+            </div>
+
+            <!-- 40 € -->
+            <div class="package-card">
+                <div class="package-header">
+                    <div class="package-left">
+                        <div class="package-title">Community Helper</div>
+                        <div class="package-price">40 €</div>
+                    </div>
+                    <div class="package-badge-img">
+                        <img src="slike/hand-white.png" alt="Community Badge">
+                    </div>
+                </div>
+                <ul class="package-features">
+                    <li><i class="fa-solid fa-check"></i>Sve iz Silver paketa</li>
+                    <li><i class="fa-solid fa-check"></i>Early access buildovi</li>
+                    <li><i class="fa-solid fa-check"></i>Community Helper badge</li>
+                </ul>
+                <div class="package-actions">
+                    <button class="package-button" onclick="simpleInvestment(40, 'Community Helper')">
+                        Uloži 40 €
+                    </button>
+                </div>
+            </div>
+
+            <!-- 80 € -->
+            <div class="package-card">
+                <div class="package-header">
+                    <div class="package-left">
+                        <div class="package-title">Stylish Supporter</div>
+                        <div class="package-price">80 €</div>
+                    </div>
+                    <div class="package-badge-img">
+                        <img src="slike/youtube-red.png" alt="YouTube Badge">
+                    </div>
+                </div>
+                <ul class="package-features">
+                    <li><i class="fa-solid fa-check"></i>Sve iz Community paketa</li>
+                    <li><i class="fa-solid fa-check"></i>1 komad odjeće s logom</li>
+                    <li><i class="fa-solid fa-check"></i>Besplatna dostava</li>
+                    <li><i class="fa-solid fa-check"></i>YouTube badge</li>
+                </ul>
+                <div class="package-actions">
+                    <button class="package-button" onclick="simpleInvestment(80, 'Stylish Supporter')">
+                        Uloži 80 €
+                    </button>
+                </div>
+            </div>
+
+            <!-- 120 € -->
+            <div class="package-card">
+                <div class="package-header">
+                    <div class="package-left">
+                        <div class="package-title">Premium Insider</div>
+                        <div class="package-price">120 €</div>
+                    </div>
+                    <div class="package-badge-img">
+                        <img src="slike/reddit-orange-glow.png" alt="Reddit Badge">
+                    </div>
+                </div>
+                <ul class="package-features">
+                    <li><i class="fa-solid fa-check"></i>Sve iz Stylish paketa</li>
+                    <li><i class="fa-solid fa-check"></i>Dodatni komad odjeće</li>
+                    <li><i class="fa-solid fa-check"></i>Privatni Discord kanal</li>
+                    <li><i class="fa-solid fa-check"></i>Reddit badge</li>
+                </ul>
+                <div class="package-actions">
+                    <button class="package-button" onclick="simpleInvestment(120, 'Premium Insider')">
+                        Uloži 120 €
+                    </button>
+                </div>
+            </div>
+
+            <!-- 200 € – izbor -->
+            <div class="package-card">
+                <div class="package-header">
+                    <div class="package-left">
+                        <div class="package-title">Team Partner</div>
+                        <div class="package-price">200 €</div>
+                    </div>
+                    <div class="package-badge-img">
+                        <img src="slike/gear-blue.png" alt="Gear Badge">
+                    </div>
+                </div>
+                <ul class="package-features">
+                    <li><i class="fa-solid fa-check"></i>Sve iz Premium Insider paketa</li>
+                    <li><i class="fa-solid fa-check"></i>Poseban Gear badge</li>
+                </ul>
+                <div class="package-choice">
+                    Biraš: <strong>0.04% udjela</strong> ili <strong>3 komada odjeće</strong>.
+                </div>
+                <div class="package-actions">
+                    <button class="package-button" onclick="choiceInvestment(200, 'Team Partner', {share:0.04, merch:'3 komada odjeće'})">
+                        Uloži 200 €
+                    </button>
+                </div>
+            </div>
+
+            <!-- 500 € – izbor -->
+            <div class="package-card">
+                <div class="package-header">
+                    <div class="package-left">
+                        <div class="package-title">Advanced Partner</div>
+                        <div class="package-price">500 €</div>
+                    </div>
+                    <div class="package-badge-img">
+                        <img src="slike/hand-black.png" alt="Black Hand Badge">
+                    </div>
+                </div>
+                <ul class="package-features">
+                    <li><i class="fa-solid fa-check"></i>Sve iz Premium Insider paketa</li>
+                    <li><i class="fa-solid fa-check"></i>Advanced badge (crna ruka)</li>
+                </ul>
+                <div class="package-choice">
+                    Biraš: <strong>0.1% udjela</strong> ili <strong>5 komada odjeće + hoodie</strong>.
+                </div>
+                <div class="package-actions">
+                    <button class="package-button" onclick="choiceInvestment(500, 'Advanced Partner', {share:0.1, merch:'5 komada odjeće + premium hoodie'})">
+                        Uloži 500 €
+                    </button>
+                </div>
+            </div>
+
+            <!-- 1000 € – izbor -->
+            <div class="package-card">
+                <div class="package-header">
+                    <div class="package-left">
+                        <div class="package-title">Elite Investor</div>
+                        <div class="package-price">1000 €</div>
+                    </div>
+                    <div class="package-badge-img">
+                        <img src="slike/pbs-logo.png" alt="PBS Badge">
+                    </div>
+                </div>
+                <ul class="package-features">
+                    <li><i class="fa-solid fa-check"></i>Sve iz Premium Insider paketa</li>
+                    <li><i class="fa-solid fa-check"></i>Elite badge (PBS)</li>
+                </ul>
+                <div class="package-choice">
+                    Biraš: <strong>0.2% udjela</strong> ili <strong>7 komada odjeće + limited maska</strong>.
+                </div>
+                <div class="package-actions">
+                    <button class="package-button" onclick="choiceInvestment(1000, 'Elite Investor', {share:0.2, merch:'7 komada odjeće + limited edition maska'})">
+                        Uloži 1000 €
+                    </button>
+                </div>
+            </div>
+
+            <!-- 2500 € – izbor -->
+            <div class="package-card">
+                <div class="package-header">
+                    <div class="package-left">
+                        <div class="package-title">Executive Investor</div>
+                        <div class="package-price">2500 €</div>
+                    </div>
+                    <div class="package-badge-img">
+                        <img src="slike/youtube-dark.png" alt="YouTube Dark Badge">
+                    </div>
+                </div>
+                <ul class="package-features">
+                    <li><i class="fa-solid fa-check"></i>Sve iz Premium Insider paketa</li>
+                    <li><i class="fa-solid fa-check"></i>Executive badge (YouTube dark)</li>
+                </ul>
+                <div class="package-choice">
+                    Biraš: <strong>0.5% udjela</strong> ili <strong>full bundle + merch box + certifikat</strong>.
+                </div>
+                <div class="package-actions">
+                    <button class="package-button" onclick="choiceInvestment(2500, 'Executive Investor', {share:0.5, merch:'full clothing bundle + merch box + investor certifikat'})">
+                        Uloži 2500 €
+                    </button>
+                </div>
+            </div>
+
+            <!-- 5000 € – izbor -->
+            <div class="package-card">
+                <div class="package-header">
+                    <div class="package-left">
+                        <div class="package-title">Founder Tier</div>
+                        <div class="package-price">5000 €</div>
+                    </div>
+                    <div class="package-badge-img">
+                        <img src="slike/dark-logo.png" alt="Founder Badge">
+                    </div>
+                </div>
+                <ul class="package-features">
+                    <li><i class="fa-solid fa-check"></i>Sve iz Premium Insider paketa</li>
+                    <li><i class="fa-solid fa-check"></i>Founder neon badge</li>
+                </ul>
+                <div class="package-choice">
+                    Biraš: <strong>1% udjela</strong> ili <strong>full bundle + Founder metal badge + glow ime</strong>.
+                </div>
+                <div class="package-actions">
+                    <button class="package-button" onclick="choiceInvestment(5000, 'Founder Tier', {share:1, merch:'full bundle + Founder metal badge + glow ime u aplikaciji'})">
+                        Uloži 5000 €
+                    </button>
+                </div>
+            </div>
+
+            <!-- Custom -->
+            <div class="package-card">
+                <div class="package-header">
+                    <div class="package-left">
+                        <div class="package-title">Custom ulaganje</div>
+                        <div class="package-price">Custom</div>
+                    </div>
+                    <div class="package-badge-img">
+                        <img src="slike/gear-dark.png" alt="Custom Badge">
+                    </div>
+                </div>
+                <ul class="package-features">
+                    <li><i class="fa-solid fa-check"></i>Automatski izračun pogodnosti</li>
+                    <li><i class="fa-solid fa-check"></i>Personalizirana zahvala</li>
+                    <li><i class="fa-solid fa-check"></i>Mogućnost dogovora dodatnih benefita</li>
+                </ul>
+                <div class="package-actions">
+                    <button class="package-button secondary" onclick="customInvestment()">
+                        Unesi vlastiti iznos
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="rewards-timeline" id="timeline">
+    <div class="container">
+        <h2 class="section-title">Graf nagrada po iznosu</h2>
+        <p class="section-sub">
+            Što veći iznos, to jači badge i veći utjecaj – od običnog spomena do potencijalnog udjela u budućoj tvrtki.
+        </p>
+
+        <div class="timeline-track">
+            <div class="timeline-line"></div>
+            <div class="timeline-points">
+                <div class="timeline-point">
+                    <div class="timeline-img"><img src="slike/mask-white.png" alt=""></div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-amount">5 €</div>
+                </div>
+                <div class="timeline-point">
+                    <div class="timeline-img"><img src="slike/mask-purple.png" alt=""></div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-amount">20 €</div>
+                </div>
+                <div class="timeline-point">
+                    <div class="timeline-img"><img src="slike/hand-white.png" alt=""></div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-amount">40 €</div>
+                </div>
+                <div class="timeline-point">
+                    <div class="timeline-img"><img src="slike/youtube-red.png" alt=""></div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-amount">80 €</div>
+                </div>
+                <div class="timeline-point">
+                    <div class="timeline-img"><img src="slike/reddit-orange.png" alt=""></div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-amount">120 €</div>
+                </div>
+                <div class="timeline-point">
+                    <div class="timeline-img"><img src="slike/gear-blue.png" alt=""></div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-amount">200 €</div>
+                </div>
+                <div class="timeline-point">
+                    <div class="timeline-img"><img src="slike/hand-black.png" alt=""></div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-amount">500 €</div>
+                </div>
+                <div class="timeline-point">
+                    <div class="timeline-img"><img src="slike/pbs-logo.png" alt=""></div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-amount">1000 €</div>
+                </div>
+                <div class="timeline-point">
+                    <div class="timeline-img"><img src="slike/youtube-dark.png" alt=""></div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-amount">2500 €</div>
+                </div>
+                <div class="timeline-point">
+                    <div class="timeline-img"><img src="slike/dark-logo.png" alt=""></div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-amount">5000 €</div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>© 2026 Blokator Oglasa. Sva prava pridržana.</p>
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+<section class="supporters">
+    <div class="container">
+        <h2 class="section-title">Hall of Supporters</h2>
+        <p class="section-sub">
+            Primjeri kako će izgledati prikaz ulagača i njihovih badgeva unutar aplikacije ili na webu.
+        </p>
+
+        <div class="supporters-grid" id="supporters-list">
+            <!-- Dinamički se može puniti kasnije; za školu ostavljam par primjera -->
+            <div class="supporter-card">
+                <div class="supporter-badge">
+                    <img src="slike/mask-white.png" alt="">
+                </div>
+                <div>
+                    <div class="supporter-name">Ana K.</div>
+                    <div class="supporter-tier">Bronze Supporter – 5 €</div>
+                </div>
+            </div>
+            <div class="supporter-card">
+                <div class="supporter-badge">
+                    <img src="slike/youtube-red.png" alt="">
+                </div>
+                <div>
+                    <div class="supporter-name">Marko P.</div>
+                    <div class="supporter-tier">Stylish Supporter – 80 €</div>
+                </div>
+            </div>
+            <div class="supporter-card">
+                <div class="supporter-badge">
+                    <img src="slike/dark-logo.png" alt="">
+                </div>
+                <div>
+                    <div class="supporter-name">Founder Example</div>
+                    <div class="supporter-tier">Founder Tier – 5000 €</div>
+                </div>
             </div>
         </div>
-    </footer>
+    </div>
+</section>
 
-    <script>
-        let totalRaised = 0;
-        let totalInvestors = 0;
-        let daysLeft = 30;
+<footer>
+    <div class="container footer-inner">
+        <div>© 2026 Blokator Oglasa. Sva prava pridržana.</div>
+        <div class="social-icons">
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+    </div>
+</footer>
 
-        function processInvestment(amount, percentage) {
-            totalRaised += amount;
-            totalInvestors += 1;
-            
-            // Ažuriraj prikaz
-            document.getElementById('total-raised').textContent = totalRaised.toLocaleString();
-            document.getElementById('total-investors').textContent = totalInvestors;
-            
-            const percentageRaised = Math.min((totalRaised / 50000) * 100, 100);
-            document.querySelector('.progress').style.width = percentageRaised + '%';
-            
-            let message = `Hvala na ulaganju od €${amount.toLocaleString()}!`;
-            if (percentage) {
-                message += ` Ostvarili ste ${percentage} postotak u tvrtki.`;
-            }
-            
-            alert(message);
+<script>
+    let totalRaised = 0;
+    let totalInvestors = 0;
+    const goal = 50000;
+
+    function updateProgress() {
+        document.getElementById('total-raised').textContent = totalRaised.toLocaleString('hr-HR') + ' €';
+        document.getElementById('total-investors').textContent = totalInvestors + ' ulagača';
+        const percent = Math.min((totalRaised / goal) * 100, 100);
+        document.getElementById('progress-fill').style.width = percent + '%';
+        document.getElementById('progress-percent').textContent = percent.toFixed(1) + '% cilja';
+    }
+
+    function confirmFinal(message) {
+        return confirm(message);
+    }
+
+    function simpleInvestment(amount, tierName) {
+        const sure = confirmFinal(`Jesi li siguran da želiš uložiti ${amount} € za paket "${tierName}"?`);
+        if (!sure) return;
+
+        totalRaised += amount;
+        totalInvestors++;
+        updateProgress();
+
+        alert(`Hvala na ulaganju od ${amount} € u paket "${tierName}"!`);
+    }
+
+    function choiceInvestment(amount, tierName, options) {
+        const choice = prompt(
+            `Za paket "${tierName}" (${amount} €):\n` +
+            `Želiš li:\n` +
+            `1) Udio u tvrtki (${options.share}% udjela)\n` +
+            `2) ${options.merch}\n\n` +
+            `Upiši 1 ili 2:`
+        );
+
+        if (choice !== '1' && choice !== '2') {
+            alert('Odabir nije valjan. Ulaganje je otkazano.');
+            return;
         }
-    </script>
-</body>
 
+        const chosenText = choice === '1'
+            ? `udio u tvrtki (${options.share}% udjela)`
+            : options.merch;
+
+        const sure = confirmFinal(
+            `Jesi li siguran da želiš paket "${tierName}" za ${amount} €\n` +
+            `s odabirom: ${chosenText}?`
+        );
+        if (!sure) return;
+
+        totalRaised += amount;
+        totalInvestors++;
+        updateProgress();
+
+        let msg = `Hvala na ulaganju od ${amount} € u paket "${tierName}"!\nOdabrao si: ${chosenText}.`;
+        if (choice === '1') {
+            msg += `\nOstvaruješ ${options.share}% udjela (simulirano za potrebe projekta).`;
+        }
+        alert(msg);
+    }
+
+    function customInvestment() {
+        const input = prompt('Unesi iznos ulaganja u eurima:');
+        if (!input) return;
+
+        const amount = parseFloat(input.replace(',', '.'));
+        if (isNaN(amount) || amount <= 0) {
+            alert('Nevažeći iznos.');
+            return;
+        }
+
+        let benefits = 'Na temelju iznosa, dobivaš:\n';
+
+        if (amount >= 5) benefits += '- Bronze Supporter (ime u creditsima)\n';
+        if (amount >= 20) benefits += '- Silver Supporter (pismo zahvale)\n';
+        if (amount >= 40) benefits += '- Community Helper (early access)\n';
+        if (amount >= 80) benefits += '- Stylish Supporter (1 komad odjeće)\n';
+        if (amount >= 120) benefits += '- Premium Insider (dodatni komad + Discord)\n';
+        if (amount >= 200) benefits += '- Mogućnost izbora: udio ili 3 komada odjeće\n';
+        if (amount >= 500) benefits += '- Veći udio ili 5 komada + hoodie\n';
+        if (amount >= 1000) benefits += '- Još veći udio ili 7 komada + limited maska\n';
+        if (amount >= 2500) benefits += '- Executive pogodnosti (full bundle + box + certifikat)\n';
+        if (amount >= 5000) benefits += '- Founder Tier (1% udjela ili full bundle + Founder badge)\n';
+
+        const sure = confirmFinal(
+            `Jesi li siguran da želiš uložiti ${amount} €?\n\n` +
+            `Sažetak pogodnosti:\n${benefits}`
+        );
+        if (!sure) return;
+
+        totalRaised += amount;
+        totalInvestors++;
+        updateProgress();
+
+        alert('Hvala na custom ulaganju!\n\n' + benefits);
+    }
+
+    // Hero dots animacija
+    (function initHeroDots() {
+        const container = document.getElementById('hero-dots');
+        const count = 14;
+        for (let i = 0; i < count; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'hero-dot';
+            dot.style.left = Math.random() * 100 + '%';
+            dot.style.top = Math.random() * 100 + '%';
+            dot.style.animationDelay = (Math.random() * 6) + 's';
+            dot.style.animationDuration = (4 + Math.random() * 6) + 's';
+            container.appendChild(dot);
+        }
+    })();
+
+    // Fake blocked counter animacija
+    (function animateBlockedCounter() {
+        const el = document.getElementById('blocked-counter');
+        let value = 64;
+        setInterval(() => {
+            value += Math.floor(Math.random() * 5);
+            el.textContent = value;
+        }, 2000);
+    })();
+
+    updateProgress();
+</script>
+
+</body>
 </html>
